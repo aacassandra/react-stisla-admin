@@ -1,37 +1,43 @@
 /* eslint-disable no-console */
-import React from 'react';
-import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Header, Sidebar } from '../../../components/molecules/admin';
+import React from 'react';
+import { Footer, Header, Sidebar } from '../../../components/molecules/admin';
+import Screens from '../../screen';
 
-const Carnitas = () => {
-  return <div>Hello Carnitas</div>;
-};
-
-const Admin = ({ match }) => {
+const Router = props => {
   return (
-    <div className="main-wrapper">
-      <Header />
-      <Sidebar />
-      <div className="main-content">
-        <section className="section">
-          <div className="section-header">
-            <h1>Dashboard</h1>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <Route path="/dashboard/coba" component={Carnitas} />
-            </div>
-          </div>
-        </section>
-      </div>
-      {/* <Footer /> */}
+    <div>
+      <Screens.Dashboard
+        style={props.match.path !== '/dashboard' ? page.disabled : ''}
+        match={props.match}
+      />
     </div>
   );
 };
 
+const Admin = props => {
+  return (
+    <div className="main-wrapper">
+      <Header />
+      <Sidebar />
+      <Router match={props.match} />
+      <Footer />
+    </div>
+  );
+};
+
+Router.propTypes = {
+  match: PropTypes.object.isRequired
+};
+
 Admin.propTypes = {
   match: PropTypes.object.isRequired
+};
+
+const page = {
+  disabled: {
+    display: 'none'
+  }
 };
 
 export default Admin;

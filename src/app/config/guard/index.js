@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import auth from '../auth';
 
 export const Guard = ({ component: Component, ...rest }) => {
@@ -25,9 +24,4 @@ export const Guard = ({ component: Component, ...rest }) => {
       }}
     />
   );
-};
-
-Guard.propTypes = {
-  component: PropTypes.any.isRequired,
-  location: PropTypes.any.isRequired
 };

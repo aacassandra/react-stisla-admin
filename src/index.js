@@ -10,8 +10,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 // eslint-disable-next-line no-undef
-import { BrowserRouter } from 'react-router-dom';
-import history from './history';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import 'summernote/dist/summernote-bs4.css';
 import App from './app/config/routes';
 import './assets/css/components.css';
@@ -65,8 +64,10 @@ require('summernote/dist/summernote-bs4');
 require('chocolat/dist/js/jquery.chocolat.min');
 
 ReactDOM.render(
-  <BrowserRouter history={history} forceRefresh>
-    <App />
+  <BrowserRouter>
+    <HashRouter>
+      <App />
+    </HashRouter>
   </BrowserRouter>,
   document.getElementById('root')
 );
