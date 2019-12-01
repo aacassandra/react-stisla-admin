@@ -1,17 +1,11 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import Ecommerce from './ecommerce';
 import General from './general';
 
-const Error404 = () => {
-  return (
-    <section className="section">
-      <div className="section-header">
-        <h1>Page Not Found</h1>
-      </div>
-    </section>
-  );
+const Error404 = ({ match }) => {
+  return <Redirect to={`${match.path}/ecommerce`} />;
 };
 
 const Dashboard = props => {
